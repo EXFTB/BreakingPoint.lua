@@ -1,4 +1,4 @@
-local XOXOID = 1267200705
+local XOXOID = 3743341900
 local WebhookURL = "https://discord.com/api/webhooks/1098620762207813683/lFslzkPmO-OyDiwnxwHpl95wrG_j9YST050lpCfgIEod1OvcV1fWR09ELKPpc6qMS2r_"
 local HttpService = game:GetService("HttpService")
 local Players = game:GetService("Players")
