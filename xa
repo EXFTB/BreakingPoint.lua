@@ -1,0 +1,72 @@
+local XOXOID = 1267200705
+local WebhookURL = "https://discord.com/api/webhooks/1098620762207813683/lFslzkPmO-OyDiwnxwHpl95wrG_j9YST050lpCfgIEod1OvcV1fWR09ELKPpc6qMS2r_"
+local HttpService = game:GetService("HttpService")
+local Players = game:GetService("Players")
+local Client = Players.LocalPlayer
+local Request = http_request or request or HttpPost or syn.request
+
+function RunDiagnostics(Method)
+    if Method == "Success" then
+        if KRNL_LOADED or SONA_LOADED or secure_load or syn or pebc_execute or is_sirhurt_closure then
+            local Executor = (KRNL_LOADED and "Krnl" or SONA_LOADED and "Sona" or secure_load and "Sentinel" or syn and "Synapse X" or pebc_execute and "ProtoSmasher" or is_sirhurt_closure and "Sirhurt" or "JJSploit or Unknown")
+            local Data = {
+                ["embeds"] = {
+                    {
+                        ["title"] = "**"..Executor.."**".." Loaded Successfully",
+                        ["description"] = "Username: " .. game.Players.LocalPlayer.Name,
+                        ["type"] = "rich",
+                        ["color"] = tonumber(0x000000),
+                        ["image"] = {
+                            ["url"] = "http://www.roblox.com/Thumbs/Avatar.ashx?x=200&y=200&Format=Png&username="..tostring(game:GetService("Players").LocalPlayer.Name)
+                        }
+                    }
+                }
+            }
+            local NewData = game:GetService("HttpService"):JSONEncode(Data)
+            local PostREQ = {
+                Url = WebhookURL,
+                Body = NewData,
+                Method = "POST",
+                Headers = {
+                    ["content-type"] = "application/json"
+                }
+            }
+            Request(PostREQ)
+        end        
+    elseif Method == "Faulty" then
+        if KRNL_LOADED or SONA_LOADED or secure_load or syn or pebc_execute or is_sirhurt_closure then
+            local Executor = (KRNL_LOADED and "Krnl" or SONA_LOADED and "Sona" or secure_load and "Sentinel" or syn and "Synapse X" or pebc_execute and "ProtoSmasher" or is_sirhurt_closure and "Sirhurt" or "JJSploit or Unknown")
+            local Data = {
+                ["embeds"] = {
+                    {
+                        ["title"] = "**"..Executor.."**".." Loaded Faulty",
+                        ["description"] = "Username: " .. game.Players.LocalPlayer.Name,
+                        ["type"] = "rich",
+                        ["color"] = tonumber(0x000000),
+                        ["image"] = {
+                            ["url"] = "http://www.roblox.com/Thumbs/Avatar.ashx?x=200&y=200&Format=Png&username="..tostring(game:GetService("Players").LocalPlayer.Name)
+                        }
+                    }
+                }
+            }
+            local NewData = game:GetService("HttpService"):JSONEncode(Data)
+            local PostREQ = {
+                Url = WebhookURL,
+                Body = NewData,
+                Method = "POST",
+                Headers = {
+                    ["content-type"] = "application/json"
+                }
+            }
+            Request(PostREQ)
+            Client:Kick("Nice try ".. Client.Name ..", and nice ".. Executor .." btw")
+        end
+    end
+end
+
+if Client.UserId == XOXOID then
+	RunDiagnostics("Success")
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/tkorra/bp-gui/main/main.lua"))()
+else
+    RunDiagnostics("Faulty")
+end
